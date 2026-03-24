@@ -1,0 +1,129 @@
+{
+  "name": "faah-command-coach",
+  "displayName": "Faah Command Coach",
+  "description": "A cross-platform VS Code extension that reacts to terminal mistakes with a configurable sound and helpful hints.",
+  "version": "0.0.1",
+  "publisher": "faah",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhupati12/FAAH.git"
+  },
+  "keywords": [
+    "vscode",
+    "terminal",
+    "developer-tools",
+    "sound",
+    "productivity"
+  ],
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Productivity",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:faah.playTestSound",
+    "onCommand:faah.toggleEnabled",
+    "onCommand:faah.openSettings",
+    "onCommand:faah.showHistory",
+    "onCommand:faah.clearHistory",
+    "onCommand:faah.inspectHistoryEntry",
+    "onView:faah.historyView"
+  ],
+  "main": "./dist/extension.js",
+  "files": [
+    "dist/**",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "images/icon.png"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "faah.playTestSound",
+        "title": "Faah: Play Test Sound"
+      },
+      {
+        "command": "faah.toggleEnabled",
+        "title": "Faah: Toggle Enabled"
+      },
+      {
+        "command": "faah.openSettings",
+        "title": "Faah: Open Settings"
+      },
+      {
+        "command": "faah.showHistory",
+        "title": "Faah: Show History"
+      },
+      {
+        "command": "faah.clearHistory",
+        "title": "Faah: Clear History"
+      },
+      {
+        "command": "faah.inspectHistoryEntry",
+        "title": "Faah: Inspect History Entry"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "faah.historyView",
+          "name": "Faah History"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Faah Command Coach",
+      "properties": {
+        "faah.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable reactions when Faah detects a confident terminal failure."
+        },
+        "faah.reactionMode": {
+          "type": "string",
+          "enum": [
+            "smart",
+            "allFailures",
+            "off"
+          ],
+          "default": "smart",
+          "markdownDescription": "Smart mode reacts only to strong failure signals. All failures reacts to any non-zero exit code. Off disables reactions."
+        },
+        "faah.sound.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Play the Faah sound when a reaction is triggered."
+        },
+        "faah.sound.fallbackToNotification": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show a warning notification if no native audio player is available."
+        },
+        "faah.cooldownMs": {
+          "type": "number",
+          "default": 1800,
+          "minimum": 0,
+          "markdownDescription": "Minimum time between reactions to avoid repeated noise when a command fails in a loop."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "pretest": "npm run compile",
+    "package": "npm run compile && vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.89.0",
+    "typescript": "^5.7.0"
+  }
+}
