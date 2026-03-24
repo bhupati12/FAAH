@@ -1,6 +1,6 @@
 # Faah Command Coach
 
-Faah Command Coach is a cross-platform VS Code extension that listens for terminal command failures and reacts with a short configurable sound, a concise hint, and a status bar cue.
+Cross-platform VS Code feedback for terminal mistakes: Faah reacts to command failures with a short sound, smart suggestions, and a local history view.
 
 ## What makes it different
 

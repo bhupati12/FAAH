@@ -1,7 +1,7 @@
 {
   "name": "faah-command-coach",
   "displayName": "Faah Command Coach",
-  "description": "A cross-platform VS Code extension that reacts to terminal mistakes with a configurable sound and helpful hints.",
+  "description": "Cross-platform VS Code feedback for terminal mistakes with smart suggestions, sound, and history.",
   "version": "0.0.1",
   "publisher": "faah",
   "license": "MIT",
